@@ -18,7 +18,7 @@ app.use(function *(){
   let referer_host = this.request.header.host;
   let allowed_sender = config.allowed_sender;
   let allowed = false;
-  var options = {};
+  var config = {};
   let err = "";
   var that = this;
 
@@ -27,7 +27,7 @@ app.use(function *(){
 
     console.log(this.request.body)
 
-    options = this.request.body;
+    config = this.request.body;
 
     let allowed = checkSender();
 
@@ -50,15 +50,17 @@ app.use(function *(){
     var deferred = Q.defer();
 
     // create reusable transporter object using the default SMTP transport
-    var transporter = nodemailer.createTransport('smtps://mailer@schmidigital.de:zitYAzAKC3aZTeP9@mail.schmidigital.de');
+    let url = 'smtps://' + config.smtp.user + ':' + config.smtp.password + 
+              + "@" + confit.smtp.host;
+    var transporter = nodemailer.createTransport();
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: '"Jeffrey" <mailer@schmidigital.de>', // sender address
-        to: options.to, // list of receivers
+        to: config.to, // list of receivers
         subject: '✉️ Neue Kontaktanfrage', // Subject line
-        text: options.text.plain, // plaintext body
-        html: options.text.html // html body
+        text: config.text.plain, // plaintext body
+        html: config.text.html // html body
     };
 
     // send mail with defined transport object
@@ -85,7 +87,7 @@ app.use(function *(){
         err = "Sender Host not allowed!";
       }
 
-      if (sender.email.indexOf(options.from) > -1) {
+      if (sender.email.indexOf(config.from) > -1) {
         allowed = true;
       } else {
         err = "Sender E-Mail not allowed!";
