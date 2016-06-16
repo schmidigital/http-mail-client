@@ -1,0 +1,13 @@
+{
+  smtp: {
+    host: "mail.foo.de",
+    user: "user@bar.de",
+    password: "1234haha"
+  }
+  allowed_sender: [
+    {
+	domain: "bar.de",
+        email: "foo@bar.de"
+    }
+  ]
+}
