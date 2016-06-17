@@ -1,6 +1,6 @@
 {
   "name": "http-mail-client",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple small http interface which accepts E-Mails and sends them to whereevery you want!",
   "main": "index.js",
   "dependencies": {
