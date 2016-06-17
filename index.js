@@ -1,12 +1,15 @@
 'use strict';
 
 var koa = require('koa');
+var cors = require('koa-cors');
 var app = koa();
 var bodyParser = require('koa-bodyparser');
 var Q = require('q');
 var nodemailer = require('nodemailer');
 
 module.exports.run = function start (config) {
+  app.use(cors());
+
   app.use(bodyParser());
 
   app.use(function *(){
