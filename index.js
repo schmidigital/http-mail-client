@@ -13,7 +13,7 @@ module.exports.run = function start (config) {
   app.use(bodyParser());
 
   app.use(function *(){
-    let referer_domain = this.request.header.href;
+    let referer_domain = this.request.href;
     let allowed_sender = config.allowed_sender;
     let allowed = false;
     let err = "";
