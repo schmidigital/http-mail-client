@@ -13,7 +13,7 @@ module.exports.run = function start (config) {
   app.use(bodyParser());
 
   app.use(function *(){
-    let referer_host = this.request.header.host;
+    let referer_domain = this.request.header.href;
     let allowed_sender = config.allowed_sender;
     let allowed = false;
     let err = "";
@@ -61,14 +61,14 @@ module.exports.run = function start (config) {
       // send mail with defined transport object
       transporter.sendMail(mailOptions, function (error, info){
           if(error){
-              this.body = {
+              that.body = {
                 err: "We sent the E-Mail, but the mail Server had some problem. =/",
                 msg: ""
               };
               deferred.reject();
               return console.log(error);
           }
-          this.body = {
+          that.body = {
             err: "",
             msg: "E-Mail sent! Thank you 😀"
           };
@@ -83,10 +83,10 @@ module.exports.run = function start (config) {
     function checkSender() {
       // Only allow certain domains
       for (let sender of allowed_sender) {
-        console.log(`sender ${sender.domain}`)
-        console.log(`sender ${referer_host}`)
+        // console.log(`sender ${sender.domain}`)
+        // console.log(`sender ${referer_domain}`)
 
-        if (referer_host.indexOf(sender.domain) > -1) {
+        if (referer_domain.indexOf(sender.domain) > -1) {
           allowed = true;
           console.log("Sender Host allowed");
         } else {
