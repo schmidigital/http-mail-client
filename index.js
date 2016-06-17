@@ -30,16 +30,17 @@ module.exports.run = function start (config) {
       let allowed = checkSender();
 
       if (allowed) {
-        yield sendEmail();
+        let err = yield sendEmail();
+        console.log(err)
 
         this.body = {
-          err: "",
+          err: err,
           msg: "E-Mail sent! Thank you 😀"
         };
       } else {
-        this.body = {
-          err: "Could not send E-Mail."
-        };
+        // this.body = {
+        //   err: "Could not send E-Mail."
+        // };
         console.log( "Somebody tried to send an email, but I think he is not allowed!")
       }
     }
@@ -65,6 +66,7 @@ module.exports.run = function start (config) {
       // send mail with defined transport object
       transporter.sendMail(mailOptions, function (error, info){
           if(error){
+              deferred.reject();
               return console.log(error);
           }
           console.log(' ✉️  Message sent: ' + info.response);
@@ -77,16 +79,18 @@ module.exports.run = function start (config) {
     function checkSender() {
       // Only allow certain domains
       for (let sender of allowed_sender) {
-        // console.log(`sender ${sender.domain}`)
-        // console.log(`sender ${referer_host}`)
+        console.log(`sender ${sender.domain}`)
+        console.log(`sender ${referer_host}`)
 
         if (referer_host.indexOf(sender.domain) > -1) {
           allowed = true;
+          console.log("Sender Host allowed");
         } else {
           err = "Sender Host not allowed!";
         }
 
         if (sender.email.indexOf(options.from) > -1) {
+          console.log("Sender Email allowed");
           allowed = true;
         } else {
           err = "Sender E-Mail not allowed!";
