@@ -33,10 +33,6 @@ module.exports.run = function start (config) {
         let err = yield sendEmail();
         console.log(err)
 
-        this.body = {
-          err: err,
-          msg: "E-Mail sent! Thank you 😀"
-        };
       } else {
         // this.body = {
         //   err: "Could not send E-Mail."
@@ -51,7 +47,6 @@ module.exports.run = function start (config) {
       // create reusable transporter object using the default SMTP transport
       let url = 'smtps://' + config.smtp.user + ':' + config.smtp.password + 
                 + "@" + config.smtp.host;
-                console.log(url)
       var transporter = nodemailer.createTransport();
 
       // setup e-mail data with unicode symbols
@@ -66,9 +61,18 @@ module.exports.run = function start (config) {
       // send mail with defined transport object
       transporter.sendMail(mailOptions, function (error, info){
           if(error){
+              this.body = {
+                err: "We sent the E-Mail, but the mail Server had some problem. =/",
+                msg: ""
+              };
               deferred.reject();
               return console.log(error);
           }
+          this.body = {
+            err: "",
+            msg: "E-Mail sent! Thank you 😀"
+          };
+          
           console.log(' ✉️  Message sent: ' + info.response);
           deferred.resolve();
       });  
