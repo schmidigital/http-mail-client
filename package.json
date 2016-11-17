@@ -1,32 +1,46 @@
 {
-  "name": "http-mail-client",
-  "version": "1.0.9",
-  "description": "A simple small http interface which accepts E-Mails and sends them to whereevery you want!",
-  "main": "index.js",
+  "author": {
+    "name": "Smith64FX"
+  },
+  "bugs": {
+    "url": "https://github.com/schmidigital/http-mail-client/issues"
+  },
   "dependencies": {
     "koa": "^1.2.0",
     "koa-bodyparser": "^2.2.0",
     "koa-cors": "0.0.16",
+    "lodash": "^4.13.1",
     "nodemailer": "^2.4.2",
     "q": "^1.4.1"
   },
+  "description": "A simple small http interface which accepts E-Mails and sends them to whereevery you want!",
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "directories": {},
+  "dist": {
+    "shasum": "69ffa5426ed74d3f2918e84c42a0d7ee93703477",
+    "tarball": "https://registry.npmjs.org/http-mail-client/-/http-mail-client-1.0.9.tgz"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/schmidigital/http-mail-client.git"
-  },
+  "gitHead": "ec71fac44ed677efb4bd710af243fdceffbb9a28",
+  "homepage": "https://github.com/schmidigital/http-mail-client#readme",
   "keywords": [
     "http",
     "mail",
     "client"
   ],
-  "author": "Smith64FX",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/schmidigital/http-mail-client/issues"
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "smith64fx@gmail.com",
+      "name": "smith64fx"
+    }
+  ],
+  "name": "http-mail-client",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": "schmidigital/http-mail-client",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/schmidigital/http-mail-client#readme"
+  "version": "1.1.5"
 }
