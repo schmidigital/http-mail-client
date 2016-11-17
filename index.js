@@ -78,7 +78,7 @@ module.exports.run = function run(config) {
 
       // setup e-mail data with unicode symbols
       let mailOptions = {
-        from: '"Mailer" <mailer@schmidigital.de>', // sender address
+        from: options.from || 'mailer@schmidigital.de', // sender address
         to: options.to, // list of receivers
         replyTo: options.replyTo,
         subject: options.subject || '✉️  Neue Kontaktanfrage', // Subject line
