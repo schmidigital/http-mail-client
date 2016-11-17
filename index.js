@@ -75,7 +75,6 @@ module.exports.run = function run(config) {
       //let transporter = nodemailer.createTransport(smtpTransport(url));
       let transporter = nodemailer.createTransport(smtpTransport(smtpConfig));
 
-
       // setup e-mail data with unicode symbols
       let mailOptions = {
         from: options.from || 'mailer@schmidigital.de', // sender address
@@ -85,6 +84,9 @@ module.exports.run = function run(config) {
         text: options.text.plain, // plaintext body
         html: options.text.html // html body
       };
+      
+      console.log('Try to send E-Mail with this data:');
+      console.log(mailOptions);
 
       // send mail with defined transport object
       transporter.sendMail(mailOptions, function (error, info) {
