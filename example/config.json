@@ -11,7 +11,7 @@
     "smtp": {
       "user": "override@defaultsmtp.com",
       "password": "awesomepassword",
-      "host": "haha@lol.com",
+      "host": "smtp.lol.com",
       "port": 587
     }
   }]
