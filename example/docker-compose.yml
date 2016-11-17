@@ -1,0 +1,13 @@
+mailer:
+  image: node
+  restart: always
+  environment:
+    VIRTUAL_PORT: '3000'
+    VIRTUAL_HOST: 'mailer.my-domain.com'
+    LETSENCRYPT_HOST: 'mailer.my-domain.com'
+    LETSENCRYPT_EMAIL: 'info@my-domain.com'
+  volumes:
+    - './:/script'
+  command: 'node /script/mailer.js'
+  expose:
+    - '3000'

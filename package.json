@@ -29,12 +29,10 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "maintainers": [
-    {
-      "email": "smith64fx@gmail.com",
-      "name": "smith64fx"
-    }
-  ],
+  "maintainers": [{
+    "email": "smith64fx@gmail.com",
+    "name": "smith64fx"
+  }],
   "name": "http-mail-client",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
