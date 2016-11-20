@@ -14,7 +14,7 @@
     "nodemailer": "^2.4.2",
     "q": "^1.4.1"
   },
-  "description": "A simple small http interface which accepts E-Mails and sends them to whereevery you want!",
+  "description": "A simple small http interface which accepts E-Mails as JSON via POST and sends them to whereever you want!",
   "devDependencies": {},
   "directories": {},
   "dist": {
