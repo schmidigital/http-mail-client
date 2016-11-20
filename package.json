@@ -5,6 +5,7 @@
   "bugs": {
     "url": "https://github.com/schmidigital/http-mail-client/issues"
   },
+  "readme": "README.md",
   "dependencies": {
     "koa": "^1.2.0",
     "koa-bodyparser": "^2.2.0",
